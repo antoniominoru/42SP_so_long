@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/04 18:22:37 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/04 18:36:23 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static t_lines *read_map(int fd, t_data *data);
 char			*list_to_str(t_lines *list, t_data *data);
 void			perror_exit(char *msg, t_lines *list, t_lines *last);
 
-char	*load_map(char *name_map, t_data *data)
+char	*map_load(char *name_map, t_data *data)
 {
 	int		fd;
 	t_lines *lines;
