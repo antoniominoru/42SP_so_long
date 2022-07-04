@@ -6,7 +6,7 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/04/05 16:30:03 by aminoru-          #+#    #+#              #
-#    Updated: 2022/05/31 23:14:42 by aminoru-         ###   ########.fr        #
+#    Updated: 2022/07/04 16:45:44 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ SRCS_BONUS	= ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_b
 OBJS	=	${SRCS:.c=.o}
 OBJS_BONUS	=	${SRCS_BONUS:.c=.o}
 
-all: 		${NAME}
+all: 		${NAME} bonus
 
 ${NAME}: 	${OBJS} $(INCS)
 				ar -rcs ${NAME} ${OBJS}

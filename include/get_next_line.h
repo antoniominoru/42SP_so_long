@@ -6,13 +6,14 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:38:36 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/01 23:14:22 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/04 16:43:29 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# define BUFFER_SIZE 42
 # include <unistd.h>
 # include <stdlib.h>
 

@@ -1,37 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/04 17:29:26 by aminoru-         ###   ########.fr       */
+/*   Created: 2022/07/04 16:25:40 by aminoru-          #+#    #+#             */
+/*   Updated: 2022/07/04 17:09:04 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "so_long.h"
 
-// lib of 42 projects
-# include "libft.h"
-# include "get_next_line.h"
-# include "ft_printf.h"
-
-typedef struct s_data
+int main(int argc, char *argv[])
 {
-	void	*mlx;
-	void	*win;
-	char	*map;
-	size_t	map_width;
-	size_t	map_height;
-	size_t	map_length;
-}	t_data;
+	t_data	data;
 
-typedef struct s_lines
-{
-	char			*line;
-	struct s_lines	*next;
-}	t_lines;
-
-#endif
+	if (argc != 2)
+	{
+		ft_printf("ERROR\n The program receive one argument.\n");
+		exit(1);
+	}
+	data.map = load_map();
+}
