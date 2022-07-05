@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/05 03:01:14 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/05 14:57:53 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,12 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+# define GAMEBITS 16
+# define ESCAPE_KEY 0xff1b
+# define W_KEY 0x0077
+# define S_KEY 0x0073
+# define A_KEY 0x0061
+# define D_KEY 0x0064
 
 typedef struct s_lines
 {

@@ -1,0 +1,53 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   map_hooks.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/07/05 14:44:07 by aminoru-          #+#    #+#             */
+/*   Updated: 2022/07/05 15:11:41 by aminoru-         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long"
+
+int	handle_close(t_data *data)
+{
+	mlx_loop_end(data->mlx);
+	return (0);
+}
+
+int	handle_escape(int key, t_data *data)
+{
+	if (key == ESCAPE_KEY)
+		mlx_loop_end(data->mlx);
+	return (0);
+}
+
+int	player_move(int key, t_data *data)
+{
+	size_t	pos_new;
+
+	pos_new = data->player_pos;
+	if (key == W_KEY)
+		pos_new += -data->map_width;
+	else if (key == S_KEY)
+		pos_new += data->map_width;
+	else if (key == A_KEY)
+		pos_new += -1;
+	else if (key == D_KEY)
+		pos_new += 1;
+	if (pos_new == data->player_pos || data-> map[pos_new] == '1'
+		|| (data->map[pos_new] == 'E' && data->coins_left))
+		return (0)
+	ft_printf("Count: %d movements\n", ++data->move_count);
+	if (data->map[pos_new] == 'E')
+		mlx_loop_end(data->mlx);
+	if (data->map[pos_new] == 'C')
+		data->coins_left--;
+	data->map[data->player_pos] = '0';
+	data->map[pos_new] = 'P';
+	data->player_pos = pos_new;
+	return (0);
+}
