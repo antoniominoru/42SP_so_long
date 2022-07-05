@@ -6,13 +6,14 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/05 16:36:36 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/05 22:11:52 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-
+# include <fcntl.h>
+# include "mlx.h"
 // lib of 42 projects
 # include "libft.h"
 # include "get_next_line.h"
@@ -23,6 +24,12 @@
 # define S_KEY 0x0073
 # define A_KEY 0x0061
 # define D_KEY 0x0064
+# define KEYPRESS 2
+# define KEYRELEASE 3
+# define DESTROYNOTIFY 17
+# define KEYPRESSMASK 1
+# define KEYRELEASEMASK 2
+# define STRUCTURENOTIFYMASK 131072
 
 typedef struct s_lines
 {
