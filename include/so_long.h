@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/05 14:57:53 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/05 16:36:36 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,10 @@ typedef struct s_data
 
 char	*map_load(char *name_map, t_data *data);
 void	map_check(t_data *data);
+void	load_imgs(void *mlx, t_data *data);
+int		handle_close(t_data *data);
+int		handle_escape(int key, t_data *data);
+int		player_move(int key, t_data *data);
+int		render(t_data *data);
+
 #endif
