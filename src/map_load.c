@@ -6,24 +6,24 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/04 18:36:23 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:55:41 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static int		open_map(char *name);
-static t_lines *read_map(int fd, t_data *data);
-char			*list_to_str(t_lines *list, t_data *data);
-void			perror_exit(char *msg, t_lines *list, t_lines *last);
+static t_lines	*read_map(int fd, t_data *data);
+static char			*list_to_str(t_lines *list, t_data *data);
+static void			perror_exit(char *msg, t_lines *list, t_lines *last);
 
 char	*map_load(char *name_map, t_data *data)
 {
 	int		fd;
-	t_lines *lines;
+	t_lines	*lines;
 	char	*map;
 
-	fd = open_map(map_name);
+	fd = open_map(name_map);
 	lines = read_map(fd, data);
 	map = list_to_str(lines, data);
 	return (map);
@@ -49,7 +49,7 @@ static int	open_map(char *name)
 	return (fd);
 }
 
-static t_lines *read_map(int fd, t_data *data)
+static t_lines	*read_map(int fd, t_data *data)
 {
 	t_lines		*list;
 	t_lines		*current;
@@ -60,7 +60,7 @@ static t_lines *read_map(int fd, t_data *data)
 	list->line = get_next_line(fd);
 	if (!list->line)
 		perror_exit("Empty map.", list, list);
-	data->map_width = ft_strlen(list->line) -1;
+	data->map_width = ft_strlen(list->line) - 1;
 	current = list;
 	while (current->line)
 	{
@@ -68,14 +68,14 @@ static t_lines *read_map(int fd, t_data *data)
 			perror_exit("Map should be a rectangle.", list, current);
 		data->map_height++;
 		data->map_length += data->map_width;
-		current->next =malloc(sizeof(t_lines));
+		current->next = malloc(sizeof(t_lines));
 		current = current->next;
 		current->line = get_next_line(fd);
 	}
 	return (list);
 }
 
-char	*list_to_str(t_lines *list, t_data *data)
+static char	*list_to_str(t_lines *list, t_data *data)
 {
 	char	*str;
 	size_t	i;
@@ -86,7 +86,7 @@ char	*list_to_str(t_lines *list, t_data *data)
 	current = list;
 	while (current->line)
 	{
-		ft_strncpy(str + i, current->line, data->map_width);
+		ft_strlcpy(str + i, current->line, data->map_width + 1);
 		i += data->map_width;
 		list = list->next;
 		free(current->line);
@@ -97,7 +97,7 @@ char	*list_to_str(t_lines *list, t_data *data)
 	return (str);
 }
 
-void	perror_exit(char *msg, t_lines *list, t_lines *last)
+static void	perror_exit(char *msg, t_lines *list, t_lines *last)
 {
 	t_lines	*current;
 

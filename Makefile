@@ -6,34 +6,39 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 23:11:13 by aminoru-          #+#    #+#              #
-#    Updated: 2022/07/04 16:42:33 by aminoru-         ###   ########.fr        #
+#    Updated: 2022/07/07 14:48:20 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
+LIBFTPRINTHPATH = ./printf/
 LIBFTPRINTH = ./printf/libftprintf.a
 
+MLX_FLAGS = -lmlx -lXext -lX11
 CC = gcc
-CFLAG = -Wall -Werror -Wextra
-INCS = -I ./include
+
+CFLAG = -Wall -Werror -Wextra -g
+INCS = -I ./include/
 SRCS = ./src/get_next_line.c \
-		./src/so_long.c 
+		./src/get_next_line_utils.c \
+		./src/so_long.c \
+		./src/map_render.c \
+		./src/map_load.c \
+		./src/map_hooks.c \
+		./src/map_check.c
 
 OBJS = ${SRCS:.c=.o}
 
 all: ${NAME}
 
-${NAME}: ${OBJS} $(LIBFTPRINTH)
-			ar -rcs ${NAME} ${OBJS}
-			ranlib ${NAME}
+${NAME}: ${OBJS} 
+			make -C $(LIBFTPRINTHPATH)
+			${CC} -o ${NAME} ${CFLAG} ${OBJS} ${LIBFTPRINTH} $(MLX_FLAGS) 
 
 .c.o:
 			${CC} ${CFLAG} ${INCS} -c $< -o ${<:.c=.o}
 
-$(LIBFTPRINTH):
-			make -C ./printf
-			cp $(LIBFTPRINTH) $(NAME)
 clean:
 			make clean -C ./printf
 			rm -f ${OBJS}

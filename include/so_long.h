@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/05 22:11:52 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/07 17:04:24 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,10 @@
 # include <fcntl.h>
 # include "mlx.h"
 // lib of 42 projects
-# include "libft.h"
+# include "../libft/libft.h"
 # include "get_next_line.h"
-# include "ft_printf.h"
-# define GAMEBITS 16
+# include "../printf/ft_printf.h"
+# define GAMEBITS 32
 # define ESCAPE_KEY 0xff1b
 # define W_KEY 0x0077
 # define S_KEY 0x0073
@@ -29,7 +29,8 @@
 # define DESTROYNOTIFY 17
 # define KEYPRESSMASK 1
 # define KEYRELEASEMASK 2
-# define STRUCTURENOTIFYMASK 131072
+# define STRUCTURENOTIFYMASK 0
+# define WALL '1'
 
 typedef struct s_lines
 {
@@ -37,12 +38,12 @@ typedef struct s_lines
 	struct s_lines	*next;
 }	t_lines;
 
-typedef struct s_img
+typedef struct s_img_c
 {
 	void	*img;
 	int		width;
 	int		height;
-}	t_img;
+}	t_img_c;
 
 typedef struct s_data
 {
@@ -55,11 +56,11 @@ typedef struct s_data
 	size_t	player_pos;
 	size_t	coins_left;
 	size_t	move_count;
-	t_img	tile;
-	t_img	wall;
-	t_img	coin;
-	t_img	exit;
-	t_img	player;
+	t_img_c	floor;
+	t_img_c	wall;
+	t_img_c	coin;
+	t_img_c	exit;
+	t_img_c	player;
 }	t_data;
 
 char	*map_load(char *name_map, t_data *data);

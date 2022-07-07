@@ -6,33 +6,33 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:25:40 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/05 22:41:20 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/07 16:28:58 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void clean_data(t_data *data);
-void initial_error(int error);
+static void	clean_data(t_data *data);
+void	initial_error(int error);
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_data	data;
 
 	if (argc != 2)
 		initial_error(1);
-	data->map = map_load(argv[1], &data);
+	data.map = map_load(argv[1], &data);
 	map_check(&data);
-	data->move_count = 0;
-	data->mlx = mlx_init();
-	if (data->mlx == NULL)
+	data.move_count = 0;
+	data.mlx = mlx_init();
+	if (data.mlx == NULL)
 		initial_error(2);
 	load_imgs(data.mlx, &data);
-	data->win = mlx_new_window(data.mlx, data.map_width * GAMEBITS,
-			data.map_height * GAMEBITS, argv[0])
-	if (data->win == NULL)
+	data.win = mlx_new_window(data.mlx, data.map_width * GAMEBITS,
+			data.map_height * GAMEBITS, argv[0]);
+	if (data.win == NULL)
 	{
-		free(data->win);
+		free(data.win);
 		initial_error(3);
 	}		
 	mlx_hook(data.win, KEYPRESS, KEYPRESSMASK, player_move, &data);
@@ -43,9 +43,9 @@ int main(int argc, char *argv[])
 	clean_data(&data);
 }
 
-void clean_data(t_data *data)
+static void	clean_data(t_data *data)
 {
-	mlx_destroy_image(data->mlx, data->tile.img);
+	mlx_destroy_image(data->mlx, data->floor.img);
 	mlx_destroy_image(data->mlx, data->wall.img);
 	mlx_destroy_image(data->mlx, data->coin.img);
 	mlx_destroy_image(data->mlx, data->player.img);
@@ -56,7 +56,7 @@ void clean_data(t_data *data)
 	free(data->mlx);
 }
 
-void initial_error(int error)
+void	initial_error(int error)
 {
 	if (error == 1)
 	{
