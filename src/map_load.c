@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 19:06:37 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 00:11:23 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,10 @@ static t_lines	*read_map(int fd, t_data *data)
 	while (current->line)
 	{
 		if (data->map_width != ft_strlen(current->line) - 1)
+		{
+			close(fd);
 			perror_exit("Map should be a rectangle.", list, current);
+		}
 		data->map_height++;
 		data->map_length += data->map_width;
 		current->next = malloc(sizeof(t_lines));
