@@ -6,14 +6,14 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:25:40 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 16:28:58 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/07 19:06:54 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static void	clean_data(t_data *data);
-void	initial_error(int error);
+void		initial_error(int error);
 
 int	main(int argc, char *argv[])
 {

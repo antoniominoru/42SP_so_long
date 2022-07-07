@@ -6,7 +6,7 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 23:11:13 by aminoru-          #+#    #+#              #
-#    Updated: 2022/07/07 14:48:20 by aminoru-         ###   ########.fr        #
+#    Updated: 2022/07/07 17:54:43 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,13 +20,12 @@ CC = gcc
 
 CFLAG = -Wall -Werror -Wextra -g
 INCS = -I ./include/
-SRCS = ./src/get_next_line.c \
-		./src/get_next_line_utils.c \
-		./src/so_long.c \
+SRCS = 	./src/so_long.c \
 		./src/map_render.c \
 		./src/map_load.c \
 		./src/map_hooks.c \
-		./src/map_check.c
+		./src/map_check.c \
+		./src/get_next_line.c
 
 OBJS = ${SRCS:.c=.o}
 
