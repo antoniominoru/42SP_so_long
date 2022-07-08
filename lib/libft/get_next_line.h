@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/11 18:38:36 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 15:51:27 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:55:58 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # define BUFFER_SIZE 42
 # include <unistd.h>
 # include <stdlib.h>
-# include "../lib/libft/libft.h"
+# include "libft.h"
 
 char	*get_next_line(int fd);
 

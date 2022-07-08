@@ -6,7 +6,7 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 23:11:13 by aminoru-          #+#    #+#              #
-#    Updated: 2022/07/08 15:52:10 by aminoru-         ###   ########.fr        #
+#    Updated: 2022/07/08 15:57:29 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS = 	./src/so_long.c \
 		./src/map_load.c \
 		./src/map_hooks.c \
 		./src/map_check.c \
-		./src/get_next_line.c
 
 OBJS = ${SRCS:.c=.o}
 

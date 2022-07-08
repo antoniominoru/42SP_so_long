@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 15:51:44 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:55:38 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "mlx.h"
 // lib of 42 projects
 # include "../lib/libft/libft.h"
-# include "get_next_line.h"
+# include "../lib/libft/get_next_line.h"
 # include "../lib/printf/ft_printf.h"
 # define GAMEBITS 32
 # define ESCAPE_KEY 0xff1b
