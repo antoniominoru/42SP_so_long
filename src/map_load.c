@@ -6,16 +6,16 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 00:11:23 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:43:29 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static int			open_map(char *name);
-static t_lines		*read_map(int fd, t_data *data);
-static char			*list_to_str(t_lines *list, t_data *data);
-static void			perror_exit(char *msg, t_lines *list, t_lines *last);
+int			open_map(char *name);
+t_lines		*read_map(int fd, t_data *data);
+char			*list_to_str(t_lines *list, t_data *data);
+void			perror_exit(char *msg, t_lines *list, t_lines *last);
 
 char	*map_load(char *name_map, t_data *data)
 {
@@ -29,7 +29,7 @@ char	*map_load(char *name_map, t_data *data)
 	return (map);
 }
 
-static int	open_map(char *name)
+int	open_map(char *name)
 {
 	size_t	nlen;
 	int		fd;
@@ -49,11 +49,12 @@ static int	open_map(char *name)
 	return (fd);
 }
 
-static t_lines	*read_map(int fd, t_data *data)
+t_lines	*read_map(int fd, t_data *data)
 {
 	t_lines		*list;
 	t_lines		*current;
 
+	data->error = 0;
 	data->map_height = 0;
 	data->map_length = 0;
 	list = malloc(sizeof(t_lines));
@@ -65,20 +66,19 @@ static t_lines	*read_map(int fd, t_data *data)
 	while (current->line)
 	{
 		if (data->map_width != ft_strlen(current->line) - 1)
-		{
-			close(fd);
-			perror_exit("Map should be a rectangle.", list, current);
-		}
+			data->error = 1;
 		data->map_height++;
 		data->map_length += data->map_width;
 		current->next = malloc(sizeof(t_lines));
 		current = current->next;
 		current->line = get_next_line(fd);
 	}
+	if (data->error == 1)
+		perror_exit("Map should be a rectangle.", list, current);
 	return (list);
 }
 
-static char	*list_to_str(t_lines *list, t_data *data)
+char	*list_to_str(t_lines *list, t_data *data)
 {
 	char	*str;
 	size_t	i;
@@ -100,7 +100,7 @@ static char	*list_to_str(t_lines *list, t_data *data)
 	return (str);
 }
 
-static void	perror_exit(char *msg, t_lines *list, t_lines *last)
+void	perror_exit(char *msg, t_lines *list, t_lines *last)
 {
 	t_lines	*current;
 

@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 02:55:39 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 15:34:42 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:39:55 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,15 @@ int	render(t_data *data)
 	while (data->map[++i])
 	{
 		current_char = data->map[i];
-		if (current_char == '0')
+		if (current_char == C_FLOOR)
 			img_ptr = data->floor.img;
-		if (current_char == WALL)
+		if (current_char == C_WALL)
 			img_ptr = data->wall.img;
-		if (current_char == 'C')
+		if (current_char == C_COIN)
 			img_ptr = data->coin.img;
-		if (current_char == 'E')
+		if (current_char == C_EXIT)
 			img_ptr = data->exit.img;
-		if (current_char == 'P')
+		if (current_char == C_PLAYER)
 			img_ptr = data->player.img;
 		mlx_put_image_to_window(data->mlx, data->win, img_ptr,
 			i % data->map_width * GAMEBITS, i / data->map_width * GAMEBITS);

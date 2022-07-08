@@ -6,16 +6,16 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 18:29:02 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 17:11:05 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:44:38 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	check_border_wall(t_data *data);
-static void	check_map_chars(t_data *data);
-static void	check_count(int p_count, int e_count, int c_count, char *map);
-static void	perror_exit2(char *msg, char *map);
+void	check_border_wall(t_data *data);
+void	check_map_chars(t_data *data);
+void	check_count(int p_count, int e_count, int c_count, char *map);
+void	perror_exit2(char *msg, char *map);
 
 void	map_check(t_data *data)
 {
@@ -23,7 +23,7 @@ void	map_check(t_data *data)
 	check_map_chars(data);
 }
 
-static void	check_border_wall(t_data *data)
+void	check_border_wall(t_data *data)
 {
 	size_t	first_row;
 	size_t	last_row;
@@ -34,21 +34,21 @@ static void	check_border_wall(t_data *data)
 	last_row = data->map_length - 1;
 	while (first_row < data->map_width)
 	{
-		if (data->map[first_row++] != WALL || data->map[last_row--] != WALL)
+		if (data->map[first_row++] != C_WALL || data->map[last_row--] != C_WALL)
 			perror_exit2("Map should be surrounded by wall.", data->map);
 	}
 	first_col = 0;
 	last_col = data->map_width - 1;
 	while (first_col < data->map_length)
 	{
-		if (data->map[first_col] != WALL || data->map[last_col] != WALL)
+		if (data->map[first_col] != C_WALL || data->map[last_col] != C_WALL)
 			perror_exit2("Map should be surrounded by wall.", data->map);
 		first_col += data->map_width;
 		last_col += data->map_width;
 	}
 }
 
-static void	check_map_chars(t_data *data)
+void	check_map_chars(t_data *data)
 {
 	size_t	pos;
 	int		p_count;
@@ -61,23 +61,23 @@ static void	check_map_chars(t_data *data)
 	pos = 0;
 	while (pos < data->map_length)
 	{
-		if (data->map[pos] == 'P')
+		if (data->map[pos] == C_PLAYER)
 		{
 			data->player_pos = pos;
 			p_count++;
 		}
-		else if (data->map[pos] == 'E')
+		else if (data->map[pos] == C_EXIT)
 			e_count++;
-		else if (data->map[pos] == 'C')
+		else if (data->map[pos] == C_COIN)
 			data->coins_left++;
-		else if (data->map[pos] != WALL && data->map[pos] != '0')
+		else if (data->map[pos] != C_WALL && data->map[pos] != C_FLOOR)
 			perror_exit2("Invalid character found.", data->map);
 		pos++;
 	}	
 	check_count(p_count, e_count, data->coins_left, data->map);
 }
 
-static void	check_count(int p_count, int e_count, int c_count, char *map)
+void	check_count(int p_count, int e_count, int c_count, char *map)
 {
 	if (!p_count)
 		perror_exit2("There should be one stating position.", map);
@@ -91,7 +91,7 @@ static void	check_count(int p_count, int e_count, int c_count, char *map)
 		perror_exit2("Multiple exit points.", map);
 }
 
-static void	perror_exit2(char *msg, char *map)
+void	perror_exit2(char *msg, char *map)
 {
 	ft_printf("Error\n%s\n", msg);
 	free(map);

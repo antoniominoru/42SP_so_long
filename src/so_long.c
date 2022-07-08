@@ -6,13 +6,13 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:25:40 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 22:42:59 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:41:27 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	clean_data(t_data *data);
+void	clean_data(t_data *data);
 void		initial_error(int error, t_data *data);
 
 int	main(int argc, char *argv[])
@@ -43,7 +43,7 @@ int	main(int argc, char *argv[])
 	clean_data(&data);
 }
 
-static void	clean_data(t_data *data)
+void	clean_data(t_data *data)
 {
 	mlx_destroy_image(data->mlx, data->floor.img);
 	mlx_destroy_image(data->mlx, data->wall.img);

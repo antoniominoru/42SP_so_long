@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/01 23:12:17 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/07 17:55:00 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 15:39:12 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,11 @@
 # define KEYPRESSMASK 1
 # define KEYRELEASEMASK 2
 # define STRUCTURENOTIFYMASK 0
-# define WALL '1'
+# define C_WALL '1'
+# define C_COIN 'C'
+# define C_EXIT 'E'
+# define C_FLOOR '0'
+# define C_PLAYER 'P'
 
 typedef struct s_lines
 {
@@ -61,6 +65,7 @@ typedef struct s_data
 	t_img_c	coin;
 	t_img_c	exit;
 	t_img_c	player;
+	int		error;
 }	t_data;
 
 char	*map_load(char *name_map, t_data *data);
