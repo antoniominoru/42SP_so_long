@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 16:25:40 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 15:41:27 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:29:32 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	main(int argc, char *argv[])
 
 	if (argc != 2)
 	{
-		ft_printf("ERROR\n The program receive one argument.\n");
+		ft_printf("ERROR\nThe program receive one argument.\n");
 		exit(1);
 	}
 	data.map = map_load(argv[1], &data);
@@ -61,13 +61,13 @@ void	initial_error(int error, t_data *data)
 	if (error == 1)
 	{
 		free(data->map);
-		ft_printf("ERROR\n The program not initializer.\n");
+		ft_printf("ERROR\nThe program not initializer.\n");
 		exit(1);
 	}
 	else if (error == 2)
 	{
 		free(data->win);
-		ft_printf("ERROR\n Problem to create new window.\n");
+		ft_printf("ERROR\nProblem to create new window.\n");
 		exit(1);
 	}
 }

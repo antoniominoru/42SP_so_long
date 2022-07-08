@@ -6,7 +6,7 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 15:43:29 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 16:27:59 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int	open_map(char *name)
 	nlen = ft_strlen(name);
 	if (ft_strncmp(&name[nlen -4], ".ber", 4))
 	{
-		ft_printf("Wrong file extension.\n");
+		ft_printf("Error\nWrong file extension.\n");
 		exit(1);
 	}
 	fd = open(name, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_printf("Unable to open given map file.\n");
+		ft_printf("Error\nUnable to open given map file.\n");
 		exit(1);
 	}
 	return (fd);
