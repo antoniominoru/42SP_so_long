@@ -6,14 +6,14 @@
 #    By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/01 23:11:13 by aminoru-          #+#    #+#              #
-#    Updated: 2022/07/07 17:54:43 by aminoru-         ###   ########.fr        #
+#    Updated: 2022/07/08 15:52:10 by aminoru-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
-LIBFTPRINTHPATH = ./printf/
-LIBFTPRINTH = ./printf/libftprintf.a
+LIBFTPRINTHPATH = ./lib/printf/
+LIBFTPRINTH = ./lib/printf/libftprintf.a
 
 MLX_FLAGS = -lmlx -lXext -lX11
 CC = gcc
@@ -39,11 +39,11 @@ ${NAME}: ${OBJS}
 			${CC} ${CFLAG} ${INCS} -c $< -o ${<:.c=.o}
 
 clean:
-			make clean -C ./printf
+			make clean -C ./lib/printf
 			rm -f ${OBJS}
 
 fclean: clean
-			make fclean -C ./printf
+			make fclean -C ./lib/printf
 			rm -f ${NAME}
 
 re: fclean all
