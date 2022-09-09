@@ -6,14 +6,14 @@
 /*   By: aminoru- <aminoru-@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/04 17:09:52 by aminoru-          #+#    #+#             */
-/*   Updated: 2022/07/08 16:27:59 by aminoru-         ###   ########.fr       */
+/*   Updated: 2022/07/08 22:47:49 by aminoru-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int			open_map(char *name);
-t_lines		*read_map(int fd, t_data *data);
+int				open_map(char *name);
+t_lines			*read_map(int fd, t_data *data);
 char			*list_to_str(t_lines *list, t_data *data);
 void			perror_exit(char *msg, t_lines *list, t_lines *last);
 
